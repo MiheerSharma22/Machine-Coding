@@ -1,0 +1,10 @@
+features:-
+- Add
+- Delete
+- Edit
+- Read from local storage
+- Mark as complete
+
+## Additional features
+- change order of todos by DND
+- UNDO, REDO
