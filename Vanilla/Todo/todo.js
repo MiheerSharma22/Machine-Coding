@@ -19,9 +19,23 @@ window.addEventListener("beforeunload", (event) => {
   localStorage.setItem("todos", JSON.stringify(todos));
 });
 
+// function to fetch todos stored in localStorage, if any
+const init = () => {
+  const Todos = JSON.parse(localStorage.getItem("todos"));
+  console.log(Todos);
+  if (Todos.length) {
+    todos = [...Todos];
+    todos.forEach((todo) =>
+      handleAddingTodos(todo.title, todo.id, todo.checked)
+    );
+  }
+};
+init();
+
 // add todo
-function handleAddingTodos() {
-  todos.push(createNewTodo(todoTitle.value));
+function handleAddingTodos(title = todoTitle.value, Id = 0, checked = false) {
+  // if title has value same as add todo title then only create a new todo entry in array
+  title === todoTitle.value && todos.push(createNewTodo(title));
 
   // create a new div container for the whole todo
   const newTodoContainer = document.createElement("div");
@@ -29,27 +43,24 @@ function handleAddingTodos() {
   // in this todo container create an input checkbox
   const checkBox = document.createElement("input");
   checkBox.type = "checkbox";
-  checkBox.checked = todos[todos.length - 1].checked;
+  checkBox.checked = checked;
 
   // adding event listener on checkbox
-  checkBox.addEventListener("change", (event) => {
-    // finding the index on todos array
-    currentTodoIndex = todos.findIndex(
-      (todo) => todo.id === Number(id.textContent)
-    );
-
-    todos[currentTodoIndex].checked = event.target.checked;
-  });
+  checkBox.addEventListener("change", (event) =>
+    toggleCheckBox(event, id.textContent)
+  );
 
   // creating a hidden span for holding the value of the id
   const id = document.createElement("span");
-  id.textContent = todos.length;
+  id.textContent = title === todoTitle.value ? todos.length : Id; // if it is a new todo entry then id = length -1, else id is read from already set todo entry
   id.style.display = "none";
 
   // create a span tag for the todo title
   const todoTitleDisplay = document.createElement("input");
   todoTitleDisplay.type = "text";
-  todoTitleDisplay.value = todos[todos.length - 1].title;
+  // if new entry for todo then pick title from titleContainer else set title to the receiving value in parameters
+  todoTitleDisplay.value =
+    title === todoTitle.value ? todos[todos.length - 1].title : title;
   todoTitleDisplay.readOnly = true;
 
   // on blur event updating the title of the todo with updated title
@@ -67,29 +78,15 @@ function handleAddingTodos() {
   const editBtn = document.createElement("button");
   editBtn.style.margin = "0 5px";
   editBtn.textContent = "edit";
-
-  editBtn.addEventListener("click", (event) => {
-    event.target.parentNode.children[1].readOnly = false;
-    event.target.parentNode.children[1].focus();
-  });
+  editBtn.addEventListener("click", editHandler);
 
   //delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "delete";
-
   // adding event handler to delete button
-  deleteBtn.addEventListener("click", (event) => {
-    const currentTodoContainer = event.target.parentNode;
-
-    // removing the object from the todos array
-    const updatedTodos = todos.filter(
-      (todo) => todo.id !== Number(id.textContent)
-    );
-    todos = updatedTodos;
-
-    // removing current todo from the UI
-    todoContainer.removeChild(currentTodoContainer);
-  });
+  deleteBtn.addEventListener("click", (event) =>
+    deleteHandler(event, id.textContent)
+  );
 
   // appending checkboxz and the title isnide the todo- container
   newTodoContainer.appendChild(checkBox);
@@ -105,5 +102,31 @@ function handleAddingTodos() {
   todoTitle.value = "";
 }
 
+// delete todo
+function deleteHandler(event, id) {
+  const currentTodoContainer = event.target.parentNode;
+
+  // removing the object from the todos array
+  const updatedTodos = todos.filter((todo) => todo.id !== Number(id));
+  todos = updatedTodos;
+
+  // removing current todo from the UI
+  todoContainer.removeChild(currentTodoContainer);
+}
+
+// edit todo title
+function editHandler(event) {
+  event.target.parentNode.children[1].readOnly = false;
+  event.target.parentNode.children[1].focus();
+}
+
+// toggle checkbox
+function toggleCheckBox(event, id) {
+  // finding the index on todos array
+  currentTodoIndex = todos.findIndex((todo) => todo.id === Number(id));
+
+  todos[currentTodoIndex].checked = event.target.checked;
+}
+
 // event listener for add button
-addBtn.addEventListener("click", handleAddingTodos);
+addBtn.addEventListener("click", () => handleAddingTodos());
