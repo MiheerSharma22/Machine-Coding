@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender Machine Coding</title>
+  </head>
+  <body>
+    <!-- calender container for the current month and year -->
+    <h2 style="text-align: center">Current Month Calender</h2>
+    <div
+      class="current-calender"
+      style="width: 700px; margin-bottom: 4rem; border: 2px solid black"
+    ></div>
+
+    <!-- form for user selection -->
+    <form class="formSection" style="text-align: center">
+      <label for="month-dropdown">Month: </label>
+      <!-- month dropdown -->
+      <select id="month-dropdown" required style="margin-right: 1rem">
+        <option value="Jan">Jan</option>
+        <option value="Feb">Feb</option>
+        <option value="Mar">Mar</option>
+        <option value="Apr">Apr</option>
+        <option value="May">May</option>
+        <option value="Jun">Jun</option>
+        <option value="Jul">Jul</option>
+        <option value="Aug">Aug</option>
+        <option value="Sep">Sep</option>
+        <option value="Oct">Oct</option>
+        <option value="Nov">Nov</option>
+        <option value="Dec">Dec</option>
+      </select>
+
+      <!-- user entered year field -->
+      <label for="user-entered-year">Enter Year: </label>
+      <input type="text" required id="user-entered-year" />
+
+      <!-- submit button -->
+      <button type="submit">Generate</button>
+    </form>
+
+    <!-- heading for user selected calender -->
+    <h2 class="user-selected-calender-heading"></h2>
+
+    <!-- calneder container for the user entered month and year -->
+    <div
+      class="user-calender"
+      style="width: 700px; margin-bottom: 4rem; border: 2px solid black"
+    ></div>
+
+    <!-- script -->
+    <script src="index.js"></script>
+  </body>
+</html>

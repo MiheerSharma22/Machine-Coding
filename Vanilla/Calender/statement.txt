@@ -1,0 +1,2 @@
+- print the calender for the current month of the current year
+- print the calender for the user entered month and year
