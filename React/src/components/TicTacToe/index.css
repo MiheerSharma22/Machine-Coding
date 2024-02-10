@@ -1,0 +1,32 @@
+h2 {
+  text-align: center;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 300px;
+  height: 300px;
+}
+
+.game-columns {
+  border: 1px solid white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restart-btn {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid white;
+  margin-top: 2rem;
+}
+
+.game-columns:hover,
+.restart-btn:hover {
+  background-color: rgba(0, 0, 0, 0.205);
+  transition: all;
+  transition-duration: 150ms;
+}
