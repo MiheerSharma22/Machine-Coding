@@ -26,12 +26,7 @@ const Index = () => {
               min={3}
               required
               onChange={(e) => {
-                if (parseInt(e.target.value) & 1) setN(e.target.value);
-                else {
-                  if (parseInt(e.target.value) < n)
-                    setN(parseInt(e.target.value) - 1);
-                  else setN(parseInt(e.target.value) + 1);
-                }
+                setN(e.target.value);
               }}
             />
           </label>
