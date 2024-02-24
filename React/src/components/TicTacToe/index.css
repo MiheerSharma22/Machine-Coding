@@ -2,12 +2,16 @@ h2 {
   text-align: center;
 }
 
-.game-columns {
-  border: 1px solid white;
-  cursor: pointer;
+form {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  gap: 0.5rem;
   align-items: center;
-  justify-content: center;
 }
 
 .restart-btn {
