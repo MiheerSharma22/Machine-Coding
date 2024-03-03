@@ -39,8 +39,8 @@ const GameBoard = ({ n, setGenerateBoard }) => {
     // incresing the number of moves played already
     setNumberOfMovesMade(numberOfMovesMade + 1);
 
-    // checking for the winner after at least 5 moves are made
-    if (numberOfMovesMade >= 5) {
+    // checking for the winner after at least (2*n)-1 moves are made
+    if (numberOfMovesMade >= 2 * dimensionOfBoard - 1) {
       const [winnerFound, Winner] = checkWinner(
         currentClickedRowIndex,
         currentClickedColumnIndex
