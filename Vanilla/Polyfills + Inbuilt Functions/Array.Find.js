@@ -4,7 +4,7 @@ console.log("array: ", arr);
 // Adding myFind() to Array.prototype
 Array.prototype.myFind = function (callback) {
   for (let i = 0; i < this.length; i++) {
-    if (callback(this[i])) return this[i];
+    if (callback(this[i], i, this)) return this[i];
   }
   return -1;
 };
