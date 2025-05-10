@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer and Stopwatch</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <!-- timer radio button -->
+    <fieldset name="user-choice" id="user-choice">
+      <input type="radio" id="timer" name="option" value="timer" checked />
+      <label for="timer">Timer</label>
+
+      <!-- stopwatch radio button -->
+      <input type="radio" id="stopwatch" name="option" value="stopwatch" />
+      <label for="stopwatch">Stopwatch</label>
+    </fieldset>
+
+    <!-- timer content div -->
+    <div class="timer-container">
+      <input type="number" class="user-timer-time" value="" placeholder="Enter time in seconds"></input>
+
+      <div class="timer-time-container">0</div>
+
+      <!-- action buttons container -->
+      <div class="action-button-container">
+        <button class="startBtn start-timer">Start</button>
+        <button class="pauseBtn pause-timer">Pause</button>
+        <button class="resetBtn reset-timer">Reset</button>
+      </div>
+    </div>
+
+    <!-- stopWatch content div -->
+    <div class="watch-container">
+      <span class="watch-time-container">0:0:00</span>
+
+      <!-- action buttons container -->
+      <div class="action-button-container">
+        <button class="startBtn start-watch">Start</button>
+        <button class="pauseBtn pause-watch">Pause</button>
+        <button class="resetBtn reset-watch">Reset</button>
+      </div>
+    </div>
+  </body>
+
+  <script src="index.js"></script>
+</html>

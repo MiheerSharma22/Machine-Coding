@@ -1,0 +1,4 @@
+- need to implement timer / stopwatch
+- in timer the user input is their desired amount of time for which the timer runs, once this time is over timer automatically stops.
+- in stopwatch, once started it keeps on increasing the time in milli-seconds until stopped.
+- both timer and stopwatch have two action buttons => Pause and Reset.
