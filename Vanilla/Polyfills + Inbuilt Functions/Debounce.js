@@ -13,7 +13,7 @@ const myDebounce = (functionToBeCalled, delay) => {
   return function (...args) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
-      functionToBeCalled(args);
+      functionToBeCalled(...args);
     }, delay);
   };
 };
